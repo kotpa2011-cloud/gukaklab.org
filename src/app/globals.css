@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/*
+ * 현재는 디자인 적용 전 단계입니다.
+ * Figma 디자인이 확정되면 색상/타이포그래피 토큰을 이 파일의 @theme 에 정의하세요.
+ */
+@theme inline {
+  --font-sans: var(--font-base);
+}
+
+:root {
+  --font-base:
+    system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+}
+
+body {
+  font-family: var(--font-base);
+  line-height: 1.6;
+}
