@@ -1,11 +1,18 @@
-import { siteConfig } from "@/lib/site";
+import Link from "next/link";
+
+import { mainNav, siteConfig } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t">
-      <div className="mx-auto max-w-5xl px-4 py-8 text-sm">
-        <p>{siteConfig.name}</p>
-      </div>
+    <footer className="site-footer">
+      <p>{siteConfig.name}: 비즈니스 랩</p>
+      <nav aria-label="하단 메뉴">
+        {mainNav.map((item) => (
+          <Link key={item.href} href={item.href}>
+            {item.label}
+          </Link>
+        ))}
+      </nav>
     </footer>
   );
 }

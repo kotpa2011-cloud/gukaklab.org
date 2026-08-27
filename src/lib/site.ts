@@ -5,7 +5,7 @@
 export const siteConfig = {
   name: "국악 길라잡이",
   description:
-    "국악과 관객을 잇는 과정과 기록을 소개하는 국악 길라잡이 웹사이트입니다.",
+    "예술의 바깥에서 새로운 국악의 무대를 만드는 국악 길라잡이 비즈니스 랩입니다.",
 } as const;
 
 /** Header / Footer 공통 메뉴 */
