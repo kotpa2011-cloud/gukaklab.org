@@ -1,5 +1,62 @@
 import Image from "next/image";
 
+const graphics = {
+  fan: {
+    src: "/images/gukak/home-v2/fan.png",
+    width: 1711,
+    height: 1477,
+  },
+  geomungo: {
+    src: "/images/gukak/home-v2/geomungo.png",
+    width: 1380,
+    height: 1363,
+  },
+  gong: {
+    src: "/images/gukak/home-v2/gong.png",
+    width: 1414,
+    height: 1330,
+  },
+  janggu: {
+    src: "/images/gukak/home-v2/janggu.png",
+    width: 1437,
+    height: 1686,
+  },
+} as const;
+
+type GraphicName = keyof typeof graphics;
+
+function RollingLane({
+  graphic,
+  className,
+}: {
+  graphic: GraphicName;
+  className: string;
+}) {
+  const asset = graphics[graphic];
+
+  return (
+    <div className={`rolling-lane ${className}`}>
+      <div className="rolling-track">
+        {[0, 1].map((copy) => (
+          <div className="rolling-sequence" key={copy}>
+            <div className={`rolling-object rolling-object-${graphic}`}>
+              <Image
+                className={`rolling-asset rolling-asset-${graphic}`}
+                src={asset.src}
+                alt=""
+                width={asset.width}
+                height={asset.height}
+                priority={copy === 0}
+                sizes="(max-width: 700px) 46vw, 23vw"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function HomePage() {
   return (
     <section className="home-poster" aria-labelledby="home-title">
@@ -8,84 +65,87 @@ export default function HomePage() {
       </h1>
 
       <div className="desktop-poster" aria-hidden="true">
-        <p className="poster-type poster-gugak">GUGAK</p>
-        <p className="poster-type poster-biz-ghost">BIZ LAB</p>
-        <p className="poster-type poster-gugak-ghost">GUGAK</p>
-        <p className="poster-type poster-biz">BIZ LAB</p>
+        <Image
+          className="poster-pattern poster-pattern-pc"
+          src="/images/gukak/home-v2/pattern-pc.svg"
+          alt=""
+          width={1920}
+          height={1430}
+          priority
+        />
 
         <Image
-          className="instrument instrument-janggu"
-          src="/images/gukak/janggu-cutout.png"
+          className="pc-type pc-gugak-ghost"
+          src="/images/gukak/home-v2/pc-gugak-ghost.svg"
           alt=""
-          width={848}
-          height={622}
+          width={804}
+          height={374}
           priority
         />
         <Image
-          className="instrument instrument-fan"
-          src="/images/gukak/fan-cutout.png"
+          className="pc-type pc-bizlab-ghost"
+          src="/images/gukak/home-v2/pc-bizlab-ghost.svg"
           alt=""
-          width={955}
-          height={755}
+          width={864}
+          height={374}
           priority
         />
         <Image
-          className="instrument instrument-geomungo"
-          src="/images/gukak/geomungo-silhouette.svg"
+          className="pc-type pc-gugak"
+          src="/images/gukak/home-v2/pc-gugak.svg"
           alt=""
-          width={104}
-          height={123}
+          width={804}
+          height={374}
+          priority
         />
-        <span className="gong-paper">
-          <Image
-            className="instrument instrument-gong"
-            src="/images/gukak/gong-silhouette.svg"
-            alt=""
-            width={110}
-            height={100}
-          />
-        </span>
+        <Image
+          className="pc-type pc-bizlab"
+          src="/images/gukak/home-v2/pc-bizlab.svg"
+          alt=""
+          width={864}
+          height={374}
+          priority
+        />
+
+        <RollingLane graphic="janggu" className="lane-janggu" />
+        <RollingLane graphic="fan" className="lane-fan" />
+        <RollingLane graphic="geomungo" className="lane-geomungo" />
+        <RollingLane graphic="gong" className="lane-gong" />
       </div>
 
       <div className="mobile-poster" aria-hidden="true">
-        <div className="mobile-word word-gugak">
-          <Image src="/images/gukak/gugak-yellow.svg" alt="" fill sizes="35vw" />
-          <Image src="/images/gukak/gugak-magenta.svg" alt="" fill sizes="35vw" />
-        </div>
-        <div className="mobile-word word-bizlab">
-          <Image src="/images/gukak/bizlab-yellow.svg" alt="" fill sizes="35vw" />
-          <Image src="/images/gukak/bizlab-magenta.svg" alt="" fill sizes="35vw" />
-        </div>
         <Image
-          className="mobile-geomungo"
-          src="/images/gukak/geomungo-silhouette.svg"
+          className="poster-pattern poster-pattern-mo"
+          src="/images/gukak/home-v2/pattern-mo.svg"
           alt=""
-          width={104}
-          height={123}
-        />
-        <Image
-          className="mobile-gong"
-          src="/images/gukak/gong-silhouette.svg"
-          alt=""
-          width={110}
-          height={100}
-        />
-        <Image
-          className="mobile-janggu"
-          src="/images/gukak/janggu-cutout.png"
-          alt=""
-          width={848}
-          height={622}
+          width={1920}
+          height={1430}
           priority
         />
-        <Image
-          className="mobile-fan"
-          src="/images/gukak/fan-cutout.png"
-          alt=""
-          width={955}
-          height={755}
-          priority
-        />
+
+        <span className="mo-type mo-gugak-ghost">
+          <Image src="/images/gukak/home-v2/mo-gugak-ghost.svg" alt="" width={282} height={131} />
+        </span>
+        <span className="mo-type mo-gugak">
+          <Image src="/images/gukak/home-v2/mo-gugak.svg" alt="" width={282} height={131} />
+        </span>
+        <span className="mo-type mo-bizlab">
+          <Image src="/images/gukak/home-v2/mo-bizlab.svg" alt="" width={303} height={131} />
+        </span>
+        <span className="mo-type mo-bizlab-ghost">
+          <Image src="/images/gukak/home-v2/mo-bizlab-ghost.svg" alt="" width={303} height={131} />
+        </span>
+        <span className="mo-type mo-gugak-ghost mo-gugak-ghost-repeat">
+          <Image src="/images/gukak/home-v2/mo-gugak-ghost.svg" alt="" width={282} height={131} />
+        </span>
+        <span className="mo-type mo-gugak mo-gugak-repeat">
+          <Image src="/images/gukak/home-v2/mo-gugak.svg" alt="" width={282} height={131} />
+        </span>
+
+        <RollingLane graphic="geomungo" className="lane-geomungo" />
+        <RollingLane graphic="gong" className="lane-gong" />
+        <RollingLane graphic="janggu" className="lane-janggu" />
+        <RollingLane graphic="fan" className="lane-fan" />
       </div>
     </section>
   );

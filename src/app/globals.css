@@ -5,7 +5,7 @@
   --magenta: #ae00ff;
   --black: #000;
   --white: #fff;
-  --header-height: 80px;
+  --header-height: 112px;
   --page-gutter: clamp(24px, 3.1vw, 60px);
   --font-base:
     Arial, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
@@ -107,6 +107,7 @@ ul {
   position: relative;
   z-index: 50;
   height: var(--header-height);
+  background: var(--black);
 }
 
 .desktop-header {
@@ -117,36 +118,48 @@ ul {
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  padding-inline: var(--page-gutter);
+  padding: 20px 70px;
   background: var(--black);
 }
 
 .site-wordmark {
-  color: var(--yellow);
-  font-size: clamp(1.1rem, 1.7vw, 1.85rem);
-  font-weight: 900;
-  letter-spacing: -0.07em;
-  white-space: nowrap;
+  display: block;
+  width: 411px;
+  height: 36px;
+  flex: 0 0 auto;
+}
+
+.site-wordmark img,
+.desktop-foundation-logo {
+  width: 100%;
+  height: 100%;
 }
 
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: clamp(26px, 3.6vw, 68px);
-  font-size: clamp(0.9rem, 1.05vw, 1.2rem);
-  font-weight: 800;
+  gap: 40px;
 }
 
-.desktop-nav > a {
+.desktop-nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.desktop-nav-links a {
   position: relative;
-  padding-block: 16px;
+  padding: 20px;
+  font-family: "Neue Haas Grotesk Display Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1;
 }
 
-.desktop-nav > a::after {
+.desktop-nav-links a::after {
   position: absolute;
-  right: 0;
-  bottom: 9px;
-  left: 0;
+  right: 20px;
+  bottom: 12px;
+  left: 20px;
   height: 3px;
   background: var(--yellow);
   content: "";
@@ -155,27 +168,16 @@ ul {
   transition: transform 180ms ease;
 }
 
-.desktop-nav > a:hover::after,
-.desktop-nav > a[aria-current="page"]::after {
+.desktop-nav-links a:hover::after,
+.desktop-nav-links a[aria-current="page"]::after {
   transform: scaleX(1);
   transform-origin: left;
 }
 
-.foundation-name {
-  display: flex;
-  min-width: 174px;
-  flex-direction: column;
-  padding-left: 22px;
-  border-left: 1px solid var(--white);
-  font-size: 0.72rem;
-  font-weight: 800;
-  line-height: 1.05;
-}
-
-.foundation-name small {
-  margin-top: 3px;
-  font-size: 0.38rem;
-  font-weight: 500;
+.desktop-foundation-logo {
+  width: 214px;
+  height: 36px;
+  flex: 0 0 auto;
 }
 
 .mobile-rail,
@@ -186,119 +188,209 @@ ul {
 /* HOME */
 .home-poster {
   position: relative;
-  min-height: calc(100svh - var(--header-height));
+  height: calc(100svh - var(--header-height));
+  min-height: 600px;
   overflow: hidden;
   color: var(--black);
   background-color: var(--yellow);
-  background-image: radial-gradient(rgb(255 195 0 / 38%) 0.8px, transparent 0.8px);
-  background-size: 5px 5px;
 }
 
 .desktop-poster {
   position: relative;
   width: 100%;
-  min-height: calc(100svh - var(--header-height));
-  aspect-ratio: 16 / 8.6;
+  height: 100%;
   overflow: hidden;
 }
 
-.poster-type {
+.poster-pattern {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.pc-type {
   position: absolute;
   z-index: 1;
-  color: var(--magenta);
-  font-family: var(--font-display);
-  font-size: clamp(9rem, 16.3vw, 19.6rem);
-  font-stretch: condensed;
-  font-weight: 900;
-  letter-spacing: -0.055em;
-  line-height: 0.76;
-  white-space: nowrap;
+  height: auto;
 }
 
-.poster-gugak {
-  top: 5.5%;
-  left: 2.2%;
+.pc-gugak {
+  top: 8.78%;
+  left: 4.1667%;
+  width: 41.8824%;
 }
 
-.poster-biz-ghost {
-  z-index: 0;
-  top: 6%;
-  right: 2.4%;
-  color: var(--yellow-ghost);
+.pc-bizlab-ghost {
+  top: 8.78%;
+  left: 51.38%;
+  width: 44.9844%;
 }
 
-.poster-gugak-ghost {
-  z-index: 0;
-  bottom: 5%;
-  left: 2.2%;
-  color: var(--yellow-ghost);
+.pc-gugak-ghost {
+  top: 52.58%;
+  left: 4.1667%;
+  width: 41.8824%;
 }
 
-.poster-biz {
-  right: 1.7%;
-  bottom: 4.5%;
+.pc-bizlab {
+  top: 52.58%;
+  left: 51.38%;
+  width: 44.9844%;
 }
 
-.instrument {
+.rolling-lane {
   position: absolute;
   z-index: 3;
-  object-fit: contain;
+  inset: 0;
+  overflow: hidden;
+  contain: layout paint;
+  pointer-events: none;
 }
 
-.instrument-janggu {
-  top: 4%;
-  left: 53%;
-  width: clamp(170px, 16.5vw, 316px);
-  height: auto;
-  padding: 5%;
-  background: var(--white);
-  clip-path: polygon(12% 7%, 72% 0, 100% 18%, 91% 90%, 31% 100%, 0 73%);
-  transform: rotate(112deg);
+.rolling-track {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  will-change: transform;
 }
 
-.instrument-fan {
-  top: 7%;
-  right: 3.5%;
-  width: clamp(190px, 18.4vw, 352px);
-  height: auto;
-  padding: 5%;
-  background: var(--white);
-  clip-path: polygon(8% 8%, 76% 0, 100% 22%, 88% 89%, 28% 100%, 0 72%);
-  transform: rotate(-4deg);
-}
-
-.instrument-geomungo {
-  bottom: 6%;
-  left: 6%;
-  width: clamp(140px, 13.8vw, 265px);
-  height: auto;
-  filter: invert(1);
-  transform: rotate(-13deg);
-}
-
-.gong-paper {
-  position: absolute;
-  z-index: 2;
-  bottom: 4%;
-  left: 27.5%;
-  display: grid;
-  width: clamp(170px, 16vw, 307px);
-  aspect-ratio: 1;
-  place-items: center;
-  background: var(--white);
-  clip-path: polygon(14% 5%, 78% 0, 100% 27%, 93% 83%, 69% 100%, 11% 86%, 0 33%);
-  transform: rotate(-8deg);
-}
-
-.instrument-gong {
+.rolling-sequence {
   position: relative;
-  width: 86%;
-  height: 86%;
-  filter: invert(12%) sepia(99%) saturate(7478%) hue-rotate(276deg)
-    brightness(96%) contrast(127%);
+  width: 50%;
+  height: 100%;
+  flex: 0 0 50%;
+}
+
+.rolling-object {
+  position: absolute;
+  width: 22.9167%;
+  aspect-ratio: 1;
+  filter: drop-shadow(0 0 25px rgb(0 0 0 / 15%));
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.rolling-asset {
+  position: absolute;
+  height: auto;
+}
+
+.rolling-asset-fan {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+.rolling-asset-geomungo {
+  top: 50%;
+  left: 7.46%;
+  width: 85.08%;
+  transform: translateY(-50%);
+}
+
+.rolling-asset-gong {
+  top: 50%;
+  left: 8.25%;
+  width: 83.5%;
+  transform: translateY(-50%);
+}
+
+.rolling-asset-janggu {
+  top: 0;
+  left: 7.41%;
+  width: 85.27%;
+}
+
+.lane-janggu .rolling-object {
+  top: 4.545%;
+  left: 50.5208%;
+}
+
+.lane-fan .rolling-object {
+  top: 4.545%;
+  left: 73.4375%;
+}
+
+.lane-geomungo .rolling-object {
+  top: 50%;
+  left: 4.1667%;
+}
+
+.lane-gong .rolling-object {
+  top: 50%;
+  left: 27.0833%;
+}
+
+.lane-janggu .rolling-track {
+  animation: roll-right 30s linear infinite;
+}
+
+.lane-fan .rolling-track {
+  animation: roll-right 36s linear infinite;
+}
+
+.lane-geomungo .rolling-track {
+  animation: roll-left 26s linear infinite;
+}
+
+.lane-gong .rolling-track {
+  animation: roll-left 32s linear infinite;
+}
+
+.lane-janggu .rolling-object {
+  animation: rotate-clockwise 30s linear infinite;
+}
+
+.lane-fan .rolling-object {
+  animation: rotate-clockwise 36s linear infinite;
+}
+
+.lane-geomungo .rolling-object {
+  animation: rotate-counterclockwise 26s linear infinite;
+}
+
+.lane-gong .rolling-object {
+  animation: rotate-counterclockwise 32s linear infinite;
+}
+
+@keyframes roll-left {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes roll-right {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes rotate-clockwise {
+  to {
+    transform: rotate(720deg);
+  }
+}
+
+@keyframes rotate-counterclockwise {
+  to {
+    transform: rotate(-720deg);
+  }
 }
 
 .mobile-poster {
+  display: none;
+}
+
+body:has(.home-poster) .site-footer {
   display: none;
 }
 
@@ -679,7 +771,25 @@ ul {
 }
 
 @media (max-width: 980px) and (min-width: 701px) {
-  .foundation-name {
+  .desktop-header {
+    padding-inline: 24px;
+  }
+
+  .site-wordmark {
+    width: min(411px, 38vw);
+    height: auto;
+  }
+
+  .desktop-nav {
+    gap: 8px;
+  }
+
+  .desktop-nav-links a {
+    padding-inline: 12px;
+    font-size: 24px;
+  }
+
+  .desktop-foundation-logo {
     display: none;
   }
 
@@ -702,7 +812,7 @@ ul {
 
 @media (max-width: 700px) {
   :root {
-    --mobile-rail: 44px;
+    --mobile-rail: 52px;
     --header-height: 0px;
   }
 
@@ -728,16 +838,18 @@ ul {
     height: 100dvh;
     align-items: center;
     flex-direction: column;
+    gap: 20px;
+    padding: 40px 16px;
     background: var(--black);
   }
 
   .menu-toggle {
     display: grid;
-    width: 44px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     flex: 0 0 auto;
     place-content: center;
-    gap: 4px;
+    margin: -16px -16px 0;
     padding: 0;
     border: 0;
     color: var(--yellow);
@@ -745,47 +857,40 @@ ul {
     cursor: pointer;
   }
 
-  .menu-toggle span {
-    display: block;
-    width: 17px;
-    height: 2px;
-    background: currentColor;
-    transition: transform 180ms ease, opacity 180ms ease;
+  .menu-toggle img {
+    width: 20px;
+    height: 20px;
   }
 
-  .menu-toggle[aria-expanded="true"] span:first-child {
-    transform: translateY(6px) rotate(45deg);
-  }
-
-  .menu-toggle[aria-expanded="true"] span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle[aria-expanded="true"] span:last-child {
-    transform: translateY(-6px) rotate(-45deg);
+  .mobile-brand-wrap {
+    position: relative;
+    width: 14px;
+    height: 160px;
+    flex: 0 0 auto;
   }
 
   .vertical-brand {
-    width: 13px;
-    height: 148px;
-    margin-top: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160px;
+    height: 14px;
+    transform: translate(-50%, -50%) rotate(90deg);
   }
 
   .foundation-mark {
     width: 16px;
-    height: 22px;
+    height: 25px;
     margin-top: auto;
-    margin-bottom: 82px;
+    flex: 0 0 auto;
   }
 
   .mobile-menu {
     position: fixed;
     z-index: 55;
     inset: 0 var(--mobile-rail) 0 0;
-    display: grid;
+    display: block;
     overflow: hidden;
-    place-items: center;
-    border-bottom: 1px solid var(--white);
     background: var(--black);
     opacity: 0;
     pointer-events: none;
@@ -800,23 +905,30 @@ ul {
   }
 
   .mobile-menu-links {
-    width: 145%;
+    position: absolute;
+    top: 225px;
+    left: 0;
+    width: 100%;
   }
 
   .mobile-menu a {
-    display: block;
-    padding: 8px 0;
-    border-top: 1px solid var(--white);
+    display: flex;
+    min-height: 72px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 12px;
     border-bottom: 1px solid var(--white);
     color: var(--yellow);
-    font-size: clamp(3.9rem, 20vw, 6rem);
-    font-weight: 400;
-    letter-spacing: -0.06em;
+    font-family: "Neue Haas Grotesk Display Pro", "Helvetica Neue", Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 0;
     line-height: 1;
     white-space: nowrap;
   }
 
   .home-poster {
+    height: 100svh;
     min-height: 100svh;
   }
 
@@ -829,83 +941,89 @@ ul {
     display: block;
     width: 100%;
     height: 100svh;
-    min-height: 680px;
+    min-height: 640px;
     overflow: hidden;
   }
 
-  .mobile-word {
+  .poster-pattern-mo {
+    width: 1920px;
+    max-width: none;
+  }
+
+  .mo-type {
     position: absolute;
-    width: 39%;
-    height: 36%;
+    z-index: 1;
+    width: 42.5357%;
+    height: 35.216%;
   }
 
-  .mobile-word img {
-    object-fit: fill;
-  }
-
-  .word-gugak {
-    z-index: 2;
-    top: 6.5%;
-    left: 48%;
-  }
-
-  .word-gugak img:first-child {
-    transform: translateX(-110%);
-  }
-
-  .word-bizlab {
-    z-index: 2;
-    top: 43%;
-    left: 3%;
-  }
-
-  .word-bizlab img:first-child {
-    transform: translateX(110%);
-  }
-
-  .mobile-geomungo,
-  .mobile-gong,
-  .mobile-janggu,
-  .mobile-fan {
+  .mo-type img {
     position: absolute;
-    z-index: 3;
+    top: 50%;
+    left: 50%;
+    width: 215%;
     height: auto;
-    object-fit: contain;
+    max-width: none;
+    transform: translate(-50%, -50%) rotate(90deg);
   }
 
-  .mobile-geomungo {
-    top: 3%;
-    left: 5%;
-    width: 37%;
-    filter: invert(1);
-    transform: rotate(-8deg);
+  .mo-gugak-ghost {
+    top: 5%;
+    left: 4.545%;
   }
 
-  .mobile-gong {
-    top: 23%;
-    left: 4%;
-    width: 39%;
-    filter: invert(1);
+  .mo-gugak {
+    top: 5%;
+    left: 52.78%;
   }
 
-  .mobile-janggu {
-    top: 42%;
-    left: 44%;
-    width: 46%;
-    padding: 5%;
-    background: var(--white);
-    clip-path: polygon(12% 7%, 72% 0, 100% 18%, 91% 90%, 31% 100%, 0 73%);
-    transform: rotate(112deg);
+  .mo-bizlab,
+  .mo-bizlab-ghost {
+    top: 44.625%;
+    width: 42.5357%;
+    height: 37.825%;
   }
 
-  .mobile-fan {
-    top: 62%;
-    left: 39%;
-    width: 49%;
-    padding: 5%;
-    background: var(--white);
-    clip-path: polygon(8% 8%, 76% 0, 100% 22%, 88% 89%, 28% 100%, 0 72%);
-    transform: rotate(-3deg);
+  .mo-bizlab img,
+  .mo-bizlab-ghost img {
+    width: 231%;
+  }
+
+  .mo-bizlab {
+    left: 4.545%;
+  }
+
+  .mo-bizlab-ghost {
+    left: 52.78%;
+  }
+
+  .mo-gugak-ghost-repeat,
+  .mo-gugak-repeat {
+    top: 86.875%;
+  }
+
+  .mobile-poster .rolling-object {
+    width: 45.4545%;
+  }
+
+  .mobile-poster .lane-geomungo .rolling-object {
+    top: 5.25%;
+    left: 1.623%;
+  }
+
+  .mobile-poster .lane-gong .rolling-object {
+    top: 22.75%;
+    left: 1.623%;
+  }
+
+  .mobile-poster .lane-janggu .rolling-object {
+    top: 44.625%;
+    left: 50.974%;
+  }
+
+  .mobile-poster .lane-fan .rolling-object {
+    top: 62.125%;
+    left: 50.974%;
   }
 
   .about-layout {
@@ -1059,5 +1177,12 @@ ul {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .rolling-track,
+  .rolling-object {
+    animation: none !important;
+    transform: none !important;
+    will-change: auto;
   }
 }

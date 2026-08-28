@@ -27,7 +27,11 @@ export default function ArchivePage() {
 
       <div className="archive-groups">
         {groups.map(({ stage, items }, index) => (
-          <section key={stage} className="archive-group">
+          <section
+            key={stage}
+            id={stage.toLowerCase().replace("_", "-")}
+            className="archive-group"
+          >
             <header>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h2>{ARCHIVE_STAGE_LABEL[stage]}</h2>

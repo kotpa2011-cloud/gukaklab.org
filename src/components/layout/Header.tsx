@@ -5,7 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { mainNav, siteConfig } from "@/lib/site";
+import { mainNav } from "@/lib/site";
+
+const mobileNav = [
+  ...mainNav,
+  { href: "/archive#meet-up", label: "MEET UP" },
+  { href: "/archive#show-up", label: "SHOW UP" },
+] as const;
 
 export default function Header() {
   const pathname = usePathname();
@@ -23,24 +29,36 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="desktop-header">
-        <Link href="/" className="site-wordmark">
-          {siteConfig.name}: 비즈니스 랩
+        <Link href="/" className="site-wordmark" aria-label="국악 길라잡이: 비즈니스 랩 홈">
+          <Image
+            src="/images/gukak/home-v2/header-site-logo.svg"
+            alt=""
+            width={411}
+            height={36}
+            priority
+          />
         </Link>
 
         <nav aria-label="주요 메뉴" className="desktop-nav">
-          {mainNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={pathname === item.href ? "page" : undefined}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <span className="foundation-name" aria-label="전통공연예술진흥재단">
-            전통공연예술진흥재단
-            <small>Korea Traditional Performing Arts Foundation</small>
-          </span>
+          <div className="desktop-nav-links">
+            {mainNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={pathname === item.href ? "page" : undefined}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+          <Image
+            className="desktop-foundation-logo"
+            src="/images/gukak/home-v2/header-foundation.svg"
+            alt="전통공연예술진흥재단"
+            width={214}
+            height={36}
+            priority
+          />
         </nav>
       </div>
 
@@ -53,24 +71,29 @@ export default function Header() {
           aria-controls="mobile-navigation"
           onClick={() => setIsOpen((open) => !open)}
         >
-          <span />
-          <span />
-          <span />
+          <Image
+            src={isOpen ? "/images/gukak/home-v2/close.svg" : "/images/gukak/home-v2/menu.svg"}
+            alt=""
+            width={20}
+            height={20}
+          />
         </button>
 
-        <Image
-          className="vertical-brand"
-          src="/images/gukak/vertical-brand.svg"
-          alt="국악 길라잡이: 비즈니스 랩"
-          width={13}
-          height={148}
-        />
+        <span className="mobile-brand-wrap">
+          <Image
+            className="vertical-brand"
+            src="/images/gukak/home-v2/mobile-site-logo.svg"
+            alt="국악 길라잡이: 비즈니스 랩"
+            width={160}
+            height={14}
+          />
+        </span>
         <Image
           className="foundation-mark"
-          src="/images/gukak/foundation-mark.svg"
+          src="/images/gukak/home-v2/mobile-foundation.svg"
           alt="전통공연예술진흥재단"
           width={16}
-          height={22}
+          height={25}
         />
       </div>
 
@@ -81,7 +104,7 @@ export default function Header() {
         aria-hidden={!isOpen}
       >
         <div className="mobile-menu-links">
-          {mainNav.map((item) => (
+          {mobileNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
