@@ -62,7 +62,7 @@ export default function Header() {
         </nav>
       </div>
 
-      <div className="mobile-rail">
+      <div className={`mobile-rail${isOpen ? " is-menu-open" : ""}`}>
         <button
           type="button"
           className="menu-toggle"
@@ -79,7 +79,7 @@ export default function Header() {
           />
         </button>
 
-        <span className="mobile-brand-wrap">
+        <span className="mobile-brand-wrap" aria-hidden={isOpen}>
           <Image
             className="vertical-brand"
             src="/images/gukak/home-v2/mobile-site-logo.svg"

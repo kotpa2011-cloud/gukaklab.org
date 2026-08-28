@@ -200,6 +200,21 @@ ul {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  container-type: inline-size;
+}
+
+.poster-background {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 50%;
+  overflow: hidden;
+  transform: translateX(-50%);
+}
+
+.poster-background-pc {
+  width: max(100%, calc(198.3471svh - 222.1488px));
+  aspect-ratio: 1920 / 968;
 }
 
 .poster-pattern {
@@ -269,6 +284,12 @@ ul {
   position: absolute;
   width: 22.9167%;
   aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.rolling-spinner {
+  position: absolute;
+  inset: 0;
   filter: drop-shadow(0 0 25px rgb(0 0 0 / 15%));
   transform-origin: 50% 50%;
   will-change: transform;
@@ -307,55 +328,49 @@ ul {
 }
 
 .lane-janggu .rolling-object {
-  top: 4.545%;
+  top: 2.29167cqw;
   left: 50.5208%;
 }
 
 .lane-fan .rolling-object {
-  top: 4.545%;
+  top: 2.29167cqw;
   left: 73.4375%;
 }
 
 .lane-geomungo .rolling-object {
-  top: 50%;
+  top: 25.20833cqw;
   left: 4.1667%;
 }
 
 .lane-gong .rolling-object {
-  top: 50%;
+  top: 25.20833cqw;
   left: 27.0833%;
 }
 
 .lane-janggu .rolling-track {
-  animation: roll-right 30s linear infinite;
+  animation: roll-right 34s linear infinite;
 }
 
 .lane-fan .rolling-track {
-  animation: roll-right 36s linear infinite;
+  animation: roll-right 34s linear infinite;
 }
 
 .lane-geomungo .rolling-track {
-  animation: roll-left 26s linear infinite;
+  animation: roll-left 30s linear infinite;
 }
 
 .lane-gong .rolling-track {
-  animation: roll-left 32s linear infinite;
+  animation: roll-left 30s linear infinite;
 }
 
-.lane-janggu .rolling-object {
-  animation: rotate-clockwise 30s linear infinite;
+.lane-janggu .rolling-spinner,
+.lane-fan .rolling-spinner {
+  animation: rotate-clockwise 34s linear infinite;
 }
 
-.lane-fan .rolling-object {
-  animation: rotate-clockwise 36s linear infinite;
-}
-
-.lane-geomungo .rolling-object {
-  animation: rotate-counterclockwise 26s linear infinite;
-}
-
-.lane-gong .rolling-object {
-  animation: rotate-counterclockwise 32s linear infinite;
+.lane-geomungo .rolling-spinner,
+.lane-gong .rolling-spinner {
+  animation: rotate-counterclockwise 30s linear infinite;
 }
 
 @keyframes roll-left {
@@ -869,6 +884,10 @@ body:has(.home-poster) .site-footer {
     flex: 0 0 auto;
   }
 
+  .mobile-rail.is-menu-open .mobile-brand-wrap {
+    visibility: hidden;
+  }
+
   .vertical-brand {
     position: absolute;
     top: 50%;
@@ -888,7 +907,7 @@ body:has(.home-poster) .site-footer {
   .mobile-menu {
     position: fixed;
     z-index: 55;
-    inset: 0 var(--mobile-rail) 0 0;
+    inset: 0;
     display: block;
     overflow: hidden;
     background: var(--black);
@@ -927,6 +946,10 @@ body:has(.home-poster) .site-footer {
     white-space: nowrap;
   }
 
+  .mobile-menu a:last-child {
+    border-bottom: 0;
+  }
+
   .home-poster {
     height: 100svh;
     min-height: 100svh;
@@ -943,10 +966,16 @@ body:has(.home-poster) .site-footer {
     height: 100svh;
     min-height: 640px;
     overflow: hidden;
+    container-type: inline-size;
+  }
+
+  .poster-background-mo {
+    width: max(100%, 38.5svh);
+    aspect-ratio: 308 / 800;
   }
 
   .poster-pattern-mo {
-    width: 1920px;
+    width: 623.3766%;
     max-width: none;
   }
 
@@ -1007,22 +1036,22 @@ body:has(.home-poster) .site-footer {
   }
 
   .mobile-poster .lane-geomungo .rolling-object {
-    top: 5.25%;
+    top: 13.6364cqw;
     left: 1.623%;
   }
 
   .mobile-poster .lane-gong .rolling-object {
-    top: 22.75%;
+    top: 59.0909cqw;
     left: 1.623%;
   }
 
   .mobile-poster .lane-janggu .rolling-object {
-    top: 44.625%;
+    top: 115.9091cqw;
     left: 50.974%;
   }
 
   .mobile-poster .lane-fan .rolling-object {
-    top: 62.125%;
+    top: 161.3636cqw;
     left: 50.974%;
   }
 
@@ -1180,7 +1209,7 @@ body:has(.home-poster) .site-footer {
   }
 
   .rolling-track,
-  .rolling-object {
+  .rolling-spinner {
     animation: none !important;
     transform: none !important;
     will-change: auto;
