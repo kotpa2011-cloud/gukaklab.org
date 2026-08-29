@@ -944,7 +944,7 @@ body:has(.home-poster) .site-footer {
     color: var(--yellow);
     font-family: "Neue Haas Grotesk Display Pro", "Helvetica Neue", Arial, sans-serif;
     font-size: 32px;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0;
     line-height: 1;
     white-space: nowrap;
