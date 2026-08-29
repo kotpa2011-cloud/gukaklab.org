@@ -884,6 +884,10 @@ body:has(.home-poster) .site-footer {
     flex: 0 0 auto;
   }
 
+  .mobile-rail.is-menu-open {
+    background: transparent;
+  }
+
   .mobile-rail.is-menu-open .mobile-brand-wrap {
     visibility: hidden;
   }
@@ -940,7 +944,7 @@ body:has(.home-poster) .site-footer {
     color: var(--yellow);
     font-family: "Neue Haas Grotesk Display Pro", "Helvetica Neue", Arial, sans-serif;
     font-size: 32px;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 0;
     line-height: 1;
     white-space: nowrap;
