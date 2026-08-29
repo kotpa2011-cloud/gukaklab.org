@@ -197,6 +197,8 @@ ul {
   overflow: hidden;
   color: var(--black);
   background-color: var(--yellow);
+  --home-pc-cycle: 97.4918cqw;
+  --home-pc-duration: 48s;
 }
 
 .desktop-poster {
@@ -213,6 +215,7 @@ ul {
   top: 0;
   left: 50%;
   overflow: hidden;
+  container-type: inline-size;
   transform: translateX(-50%);
 }
 
@@ -228,162 +231,142 @@ ul {
   left: 50%;
   width: 100%;
   height: auto;
+  max-width: none;
   transform: translateX(-50%);
 }
 
-.pc-type {
+.home-band {
   position: absolute;
   z-index: 1;
-  height: auto;
-}
-
-.pc-gugak {
-  top: 8.78%;
-  left: 4.1667%;
-  width: 41.8824%;
-}
-
-.pc-bizlab-ghost {
-  top: 8.78%;
-  left: 51.38%;
-  width: 44.9844%;
-}
-
-.pc-gugak-ghost {
-  top: 52.58%;
-  left: 4.1667%;
-  width: 41.8824%;
-}
-
-.pc-bizlab {
-  top: 52.58%;
-  left: 51.38%;
-  width: 44.9844%;
-}
-
-.rolling-lane {
-  position: absolute;
-  z-index: 3;
   inset: 0;
-  overflow: hidden;
-  contain: layout paint;
   pointer-events: none;
 }
 
-.rolling-track {
+.home-band-track {
+  position: absolute;
   display: flex;
-  width: 200%;
-  height: 100%;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
   will-change: transform;
 }
 
-.rolling-sequence {
+.home-band-cycle {
   position: relative;
-  width: 50%;
-  height: 100%;
-  flex: 0 0 50%;
+  flex: 0 0 auto;
 }
 
-.rolling-object {
+.home-band-pc-top .home-band-track,
+.home-band-pc-bottom .home-band-track {
+  left: 4.1844cqw;
+  width: calc(var(--home-pc-cycle) * 2);
+  height: 22.9167cqw;
+}
+
+.home-band-pc-top .home-band-track {
+  top: 2.2917cqw;
+  animation: home-flow-right var(--home-pc-duration) linear infinite;
+}
+
+.home-band-pc-bottom .home-band-track {
+  top: 25.2083cqw;
+  animation: home-flow-left var(--home-pc-duration) linear infinite;
+}
+
+.home-band-pc-top .home-band-cycle,
+.home-band-pc-bottom .home-band-cycle {
+  width: var(--home-pc-cycle);
+  height: 22.9167cqw;
+}
+
+.home-band-type {
   position: absolute;
-  width: 22.9167%;
-  aspect-ratio: 1;
+  z-index: 1;
+  top: 2.1354cqw;
+  height: 19.4755cqw;
+  max-width: none;
+}
+
+.home-band-type-first {
+  left: 0;
+  width: 41.8824cqw;
+}
+
+.home-band-type-second {
+  left: 47.1949cqw;
+  width: 44.9844cqw;
+}
+
+.home-graphic {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 22.9167cqw;
+  height: 22.9167cqw;
   overflow: hidden;
-}
-
-.rolling-spinner {
-  position: absolute;
-  inset: 0;
   filter: drop-shadow(0 0 25px rgb(0 0 0 / 15%));
-  transform-origin: 50% 50%;
-  will-change: transform;
 }
 
-.rolling-asset {
+.home-graphic img {
   position: absolute;
+  display: block;
+  max-width: none;
   height: auto;
 }
 
-.rolling-asset-fan {
+.home-graphic-fan img {
   top: 50%;
   left: 0;
   width: 100%;
   transform: translateY(-50%);
 }
 
-.rolling-asset-geomungo {
+.home-graphic-geomungo img {
   top: 50%;
   left: 7.46%;
   width: 85.08%;
   transform: translateY(-50%);
 }
 
-.rolling-asset-gong {
+.home-graphic-gong img {
   top: 50%;
   left: 8.25%;
   width: 83.5%;
   transform: translateY(-50%);
 }
 
-.rolling-asset-janggu {
+.home-graphic-janggu img {
   top: 0;
   left: 7.41%;
   width: 85.27%;
 }
 
-.lane-janggu .rolling-object {
-  top: 2.29167cqw;
-  left: 50.5208%;
+.home-band-pc-top .home-graphic-janggu {
+  top: 0;
+  left: 46.3365cqw;
 }
 
-.lane-fan .rolling-object {
-  top: 2.29167cqw;
-  left: 73.4375%;
+.home-band-pc-top .home-graphic-fan {
+  top: 0;
+  left: 69.2531cqw;
 }
 
-.lane-geomungo .rolling-object {
-  top: 25.20833cqw;
-  left: 4.1667%;
+.home-band-pc-bottom .home-graphic-geomungo {
+  top: 0;
+  left: -0.0177cqw;
 }
 
-.lane-gong .rolling-object {
-  top: 25.20833cqw;
-  left: 27.0833%;
+.home-band-pc-bottom .home-graphic-gong {
+  top: 0;
+  left: 22.899cqw;
 }
 
-.lane-janggu .rolling-track {
-  animation: roll-right 34s linear infinite;
-}
-
-.lane-fan .rolling-track {
-  animation: roll-right 34s linear infinite;
-}
-
-.lane-geomungo .rolling-track {
-  animation: roll-left 30s linear infinite;
-}
-
-.lane-gong .rolling-track {
-  animation: roll-left 30s linear infinite;
-}
-
-.lane-janggu .rolling-spinner,
-.lane-fan .rolling-spinner {
-  animation: rotate-clockwise 34s linear infinite;
-}
-
-.lane-geomungo .rolling-spinner,
-.lane-gong .rolling-spinner {
-  animation: rotate-counterclockwise 30s linear infinite;
-}
-
-@keyframes roll-left {
+@keyframes home-flow-left {
   to {
     transform: translate3d(-50%, 0, 0);
   }
 }
 
-@keyframes roll-right {
+@keyframes home-flow-right {
   from {
     transform: translate3d(-50%, 0, 0);
   }
@@ -393,15 +376,19 @@ ul {
   }
 }
 
-@keyframes rotate-clockwise {
+@keyframes home-flow-up {
   to {
-    transform: rotate(720deg);
+    transform: translate3d(0, -50%, 0);
   }
 }
 
-@keyframes rotate-counterclockwise {
+@keyframes home-flow-down {
+  from {
+    transform: translate3d(0, -50%, 0);
+  }
+
   to {
-    transform: rotate(-720deg);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -1152,87 +1139,99 @@ body:has(.overview-layout) .site-footer {
   .poster-background-mo {
     width: max(100%, 38.5svh);
     aspect-ratio: 308 / 800;
+    --home-mo-cycle: 213.0942cqw;
+    --home-mo-duration: 42s;
   }
 
   .poster-pattern-mo {
-    width: 623.3766%;
-    max-width: none;
+    width: 204.5455cqw;
+    height: 353.8961cqw;
   }
 
-  .mo-type {
+  .home-band-mo-top .home-band-track,
+  .home-band-mo-bottom .home-band-track {
+    top: 12.987cqw;
+    width: 42.5357cqw;
+    height: calc(var(--home-mo-cycle) * 2);
+    flex-direction: column;
+  }
+
+  .home-band-mo-top .home-band-track {
+    left: 52.77597cqw;
+    animation: home-flow-down var(--home-mo-duration) linear infinite;
+  }
+
+  .home-band-mo-bottom .home-band-track {
+    left: 4.5455cqw;
+    animation: home-flow-up var(--home-mo-duration) linear infinite;
+  }
+
+  .home-band-mo-top .home-band-cycle,
+  .home-band-mo-bottom .home-band-cycle {
+    width: 42.5357cqw;
+    height: var(--home-mo-cycle);
+  }
+
+  .home-mobile-type {
     position: absolute;
     z-index: 1;
-    width: 42.5357%;
-    height: 35.216%;
+    left: 0;
+    display: block;
+    width: 42.5357cqw;
   }
 
-  .mo-type img {
+  .home-mobile-type-first {
+    top: 0;
+    height: 91.4714cqw;
+  }
+
+  .home-mobile-type-second {
+    top: 103.1597cqw;
+    height: 98.2461cqw;
+  }
+
+  .home-mobile-type img {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 215%;
-    height: auto;
+    width: auto;
+    height: 42.5357cqw;
     max-width: none;
     transform: translate(-50%, -50%) rotate(90deg);
   }
 
-  .mo-gugak-ghost {
-    top: 5%;
-    left: 4.545%;
+  .home-mobile-type-first img {
+    width: 91.4714cqw;
   }
 
-  .mo-gugak {
-    top: 5%;
-    left: 52.78%;
+  .home-mobile-type-second img {
+    width: 98.2461cqw;
   }
 
-  .mo-bizlab,
-  .mo-bizlab-ghost {
-    top: 44.625%;
-    width: 42.5357%;
-    height: 37.825%;
+  .home-band-mo-top .home-graphic,
+  .home-band-mo-bottom .home-graphic {
+    width: 45.4545cqw;
+    height: 45.4545cqw;
   }
 
-  .mo-bizlab img,
-  .mo-bizlab-ghost img {
-    width: 231%;
+  .home-band-mo-top .home-graphic-janggu {
+    top: 102.9221cqw;
+    left: -1.8019cqw;
   }
 
-  .mo-bizlab {
-    left: 4.545%;
+  .home-band-mo-top .home-graphic-fan {
+    top: 148.3766cqw;
+    left: -1.8019cqw;
   }
 
-  .mo-bizlab-ghost {
-    left: 52.78%;
+  .home-band-mo-bottom .home-graphic-geomungo {
+    top: 0.6494cqw;
+    left: -2.9221cqw;
   }
 
-  .mo-gugak-ghost-repeat,
-  .mo-gugak-repeat {
-    top: 86.875%;
-  }
-
-  .mobile-poster .rolling-object {
-    width: 45.4545%;
-  }
-
-  .mobile-poster .lane-geomungo .rolling-object {
-    top: 13.6364cqw;
-    left: 1.623%;
-  }
-
-  .mobile-poster .lane-gong .rolling-object {
-    top: 59.0909cqw;
-    left: 1.623%;
-  }
-
-  .mobile-poster .lane-janggu .rolling-object {
-    top: 115.9091cqw;
-    left: 50.974%;
-  }
-
-  .mobile-poster .lane-fan .rolling-object {
-    top: 161.3636cqw;
-    left: 50.974%;
+  .home-band-mo-bottom .home-graphic-gong {
+    top: 46.1039cqw;
+    left: -2.9221cqw;
   }
 
   .overview-content {
@@ -1459,8 +1458,7 @@ body:has(.overview-layout) .site-footer {
     animation-iteration-count: 1 !important;
   }
 
-  .rolling-track,
-  .rolling-spinner {
+  .home-band-track {
     animation: none !important;
     transform: none !important;
     will-change: auto;
