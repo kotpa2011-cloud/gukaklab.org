@@ -501,7 +501,7 @@ body:has(.home-poster) #main {
   position: absolute;
   top: 28px;
   left: var(--home-footer-edge);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -509,7 +509,7 @@ body:has(.home-poster) #main {
 .home-footer-info {
   position: absolute;
   bottom: 28px;
-  left: 480px;
+  left: var(--home-footer-edge);
   display: flex;
   width: 462px;
   align-items: flex-start;
@@ -527,7 +527,7 @@ body:has(.home-poster) #main {
   display: flex;
   width: 100%;
   align-items: center;
-  gap: 40px;
+  gap: 10px;
   white-space: nowrap;
 }
 
@@ -545,7 +545,7 @@ body:has(.home-poster) #main {
   position: absolute;
   right: var(--home-footer-edge);
   bottom: 42px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   text-align: right;
   transform: translateY(100%);
@@ -561,7 +561,7 @@ body:has(.overview-layout) #main {
   display: grid;
   min-width: 0;
   max-width: 1800px;
-  margin-inline: auto;
+  margin-inline: 0;
   grid-template-columns: 480px minmax(0, 1fr);
   background: #202020;
 }
@@ -764,11 +764,6 @@ body:has(.overview-layout) #main {
   line-height: 45px;
 }
 
-.overview-about-copy p:nth-child(3) {
-  width: 100%;
-  max-width: none;
-}
-
 .overview-work-list {
   display: flex;
   flex-direction: column;
@@ -797,6 +792,10 @@ body:has(.overview-layout) #main {
   font-size: 26px;
   font-weight: 700;
   line-height: 1;
+}
+
+.overview-work-item .overview-number-disc {
+  margin-block: 6px;
 }
 
 .overview-work-copy {
@@ -1319,7 +1318,7 @@ body:has(.overview-layout) #main {
   }
 
   .home-footer-contacts {
-    gap: 20px;
+    gap: 4px;
   }
 
   .home-footer-copyright {
@@ -1499,14 +1498,6 @@ body:has(.overview-layout) #main {
     line-height: 26px;
   }
 
-  .overview-about-copy p:nth-child(2) {
-    max-width: 220px;
-  }
-
-  .overview-about-copy p:nth-child(3) {
-    max-width: 244px;
-  }
-
   .overview-work-list {
     gap: 40px;
   }
@@ -1535,10 +1526,6 @@ body:has(.overview-layout) #main {
   .overview-work-copy p {
     font-size: 16px;
     line-height: 26px;
-  }
-
-  .overview-work-item:first-child .overview-work-copy p {
-    max-width: 220px;
   }
 
   .overview-work-item:nth-child(2) .overview-work-copy h3 {
