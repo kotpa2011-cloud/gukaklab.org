@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { getArchiveItemsGroupedByStage } from "@/lib/archive";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 import { ARCHIVE_STAGE_LABEL } from "@/types/archive";
 
 const title = "ARCHIVE";
@@ -10,10 +10,13 @@ const description = "MEET UP, BOOTCAMP, SHOW UP으로 이어지는 국악 길라
 export const metadata: Metadata = {
   title,
   description,
+  alternates: {
+    canonical: absoluteUrl("/archive"),
+  },
   openGraph: {
     title: `${title} | ${siteConfig.name}`,
     description,
-    url: `${siteConfig.url}/archive`,
+    url: absoluteUrl("/archive"),
     siteName: siteConfig.title,
     images: [siteConfig.ogImage],
     locale: "ko_KR",

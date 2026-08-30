@@ -5,7 +5,7 @@ import NumberDisc from "@/components/overview/NumberDisc";
 import OverviewSectionHeader from "@/components/overview/OverviewSectionHeader";
 import OverviewSectionNav from "@/components/overview/OverviewSectionNav";
 import OverviewWordBand from "@/components/overview/OverviewWordBand";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 const title = "OVERVIEW";
 const description = "국악 길라잡이 비즈니스 랩의 관점과 과정, 페이스메이커를 소개합니다.";
@@ -13,10 +13,13 @@ const description = "국악 길라잡이 비즈니스 랩의 관점과 과정, �
 export const metadata: Metadata = {
   title,
   description,
+  alternates: {
+    canonical: absoluteUrl("/about"),
+  },
   openGraph: {
     title: `${title} | ${siteConfig.name}`,
     description,
-    url: `${siteConfig.url}/about`,
+    url: absoluteUrl("/about"),
     siteName: siteConfig.title,
     images: [siteConfig.ogImage],
     locale: "ko_KR",
