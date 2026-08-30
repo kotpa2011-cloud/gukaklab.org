@@ -489,12 +489,13 @@ body:has(.home-poster) .site-footer {
   transform: translate3d(0, 100%, 0);
   will-change: transform;
   word-break: break-word;
+  --home-footer-edge: clamp(20px, 3.6458vw, 70px);
 }
 
 .home-footer-name {
   position: absolute;
   top: 28px;
-  left: 70px;
+  left: var(--home-footer-edge);
   font-size: 16px;
   font-weight: 700;
   white-space: nowrap;
@@ -537,7 +538,7 @@ body:has(.home-poster) .site-footer {
 
 .home-footer-copyright {
   position: absolute;
-  right: 70px;
+  right: var(--home-footer-edge);
   bottom: 42px;
   font-size: 16px;
   font-weight: 500;
@@ -757,7 +758,8 @@ body:has(.overview-layout) .site-footer {
 }
 
 .overview-about-copy p:nth-child(3) {
-  max-width: 1040px;
+  width: 100%;
+  max-width: none;
 }
 
 .overview-work-list {
@@ -811,11 +813,13 @@ body:has(.overview-layout) .site-footer {
 }
 
 .overview-work-item:first-child .overview-work-copy p {
-  max-width: 1000px;
+  width: 100%;
+  max-width: none;
 }
 
 .overview-work-item:nth-child(2) .overview-work-copy h3 {
-  max-width: 800px;
+  width: 100%;
+  max-width: none;
 }
 
 .overview-pacemaker-list {
@@ -1061,6 +1065,12 @@ body:has(.overview-layout) .site-footer {
   gap: 24px;
 }
 
+@media (max-width: 1500px) and (min-width: 701px) {
+  .home-footer-info {
+    left: var(--home-footer-edge);
+  }
+}
+
 @media (max-width: 1200px) and (min-width: 701px) {
   .desktop-header {
     padding-inline: 24px;
@@ -1075,7 +1085,8 @@ body:has(.overview-layout) .site-footer {
     gap: 8px;
   }
 
-  .desktop-nav-links a {
+  .desktop-nav-links a,
+  .desktop-nav-links .nav-disabled {
     padding-inline: 12px;
     font-size: 24px;
   }
