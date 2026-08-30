@@ -33,8 +33,8 @@ export default function Header() {
           <Image
             src="/images/gukak/home-v2/header-site-logo.svg"
             alt=""
-            width={411}
-            height={36}
+            width={320}
+            height={28}
             priority
           />
         </Link>

@@ -5,7 +5,7 @@
   --magenta: #ae00ff;
   --black: #000;
   --white: #fff;
-  --header-height: 112px;
+  --header-height: 96px;
   --home-footer-height: 130px;
   --page-gutter: clamp(24px, 3.1vw, 60px);
   --font-base:
@@ -119,14 +119,14 @@ ul {
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  padding: 20px 70px;
+  padding: 12px 70px;
   background: var(--black);
 }
 
 .site-wordmark {
   display: block;
-  width: 411px;
-  height: 36px;
+  width: 320px;
+  height: 28px;
   flex: 0 0 auto;
 }
 
@@ -234,7 +234,7 @@ body:has(.home-poster) #main {
 }
 
 .poster-background-pc {
-  width: max(100%, calc(198.3471svh - 222.1488px));
+  width: max(100%, calc(198.3471svh - 190.4132px));
   aspect-ratio: 1920 / 968;
 }
 
@@ -675,7 +675,7 @@ body:has(.home-poster) #main {
   }
 
   .overview-content .overview-section {
-    scroll-margin-top: 160px;
+    scroll-margin-top: 144px;
   }
 }
 
@@ -1058,7 +1058,7 @@ body:has(.home-poster) #main {
   }
 
   .site-wordmark {
-    width: min(411px, 38vw);
+    width: min(320px, 38vw);
     height: auto;
   }
 

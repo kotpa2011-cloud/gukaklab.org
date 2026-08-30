@@ -9,7 +9,7 @@ type OverviewSectionNavProps = {
 };
 
 const DESKTOP_MEDIA = "(min-width: 1101px)";
-const ACTIVATION_LINE = 160;
+const ACTIVATION_LINE = 144;
 const ACTIVATION_HYSTERESIS = 20;
 const LOCK_TIMEOUT = 1800;
 
