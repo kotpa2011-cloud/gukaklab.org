@@ -9,8 +9,16 @@ type OverviewSectionNavProps = {
 };
 
 const DESKTOP_MEDIA = "(min-width: 1101px)";
-const ACTIVATION_LINE = 144;
-const ACTIVATION_HYSTERESIS = 20;
+// Where a section lands when jumped to via nav click / URL hash (matches the
+// `.overview-section` scroll-margin-top in globals.css) — a design/layout value,
+// left untouched.
+const NAV_SCROLL_OFFSET = 144;
+// Where the *next* section is considered "entered" during normal scrolling, i.e.
+// how far down the viewport its top edge can still be while switching the active
+// nav item. Larger = earlier activation. Kept separate from NAV_SCROLL_OFFSET so
+// scroll-spy timing can be tuned without moving where clicks/hash jumps land.
+const ACTIVATION_LINE = 280;
+const ACTIVATION_HYSTERESIS = 28;
 const LOCK_TIMEOUT = 1800;
 
 export default function OverviewSectionNav({ items }: OverviewSectionNavProps) {
@@ -178,7 +186,7 @@ export default function OverviewSectionNav({ items }: OverviewSectionNavProps) {
     window.history.pushState(null, "", href);
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const targetTop = window.scrollY + target.getBoundingClientRect().top - ACTIVATION_LINE;
+    const targetTop = window.scrollY + target.getBoundingClientRect().top - NAV_SCROLL_OFFSET;
     window.scrollTo({
       top: Math.max(targetTop, 0),
       behavior: prefersReducedMotion ? "auto" : "smooth",
