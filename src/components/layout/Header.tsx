@@ -85,15 +85,21 @@ export default function Header() {
           />
         </button>
 
-        <span className="mobile-brand-wrap" aria-hidden={isOpen}>
+        <Link
+          href="/"
+          className="mobile-brand-wrap"
+          aria-label="국악 길라잡이: 비즈니스 랩 홈"
+          aria-hidden={isOpen}
+          tabIndex={isOpen ? -1 : 0}
+        >
           <Image
             className="vertical-brand"
             src="/images/gukak/home-v2/mobile-site-logo.svg"
-            alt="국악 길라잡이: 비즈니스 랩"
+            alt=""
             width={160}
             height={14}
           />
-        </span>
+        </Link>
         <Image
           className="foundation-mark"
           src="/images/gukak/home-v2/mobile-foundation.svg"
