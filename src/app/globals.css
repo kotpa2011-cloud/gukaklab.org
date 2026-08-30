@@ -553,9 +553,15 @@ body:has(.home-poster) #main {
 }
 
 /* OVERVIEW */
+body:has(.overview-layout) #main {
+  background: #0d0d0e;
+}
+
 .overview-layout {
   display: grid;
   min-width: 0;
+  max-width: 1800px;
+  margin-inline: auto;
   grid-template-columns: 480px minmax(0, 1fr);
   background: #202020;
 }
