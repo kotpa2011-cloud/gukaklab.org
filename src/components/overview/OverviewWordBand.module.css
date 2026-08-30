@@ -1,0 +1,9 @@
+.offsetRow {
+  padding-left: 14px;
+}
+
+@media (max-width: 1100px) {
+  .offsetRow {
+    padding-left: 7px;
+  }
+}

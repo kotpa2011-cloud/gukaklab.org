@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import styles from "./OverviewWordBand.module.css";
+
 const rows = [
   [
     { src: "/images/gukak/overview-v2/bizlab-yellow.svg", width: 289, height: 125 },
@@ -15,9 +17,13 @@ const rows = [
 
 export default function OverviewWordBand() {
   return (
-    <div className="overview-word-band" aria-hidden="true">
+    <div className="overview-word-band" aria-hidden="true" data-node-id="25:68363">
       {rows.map((row, rowIndex) => (
-        <div className="overview-word-row" key={rowIndex}>
+        <div
+          className={`overview-word-row${rowIndex === 1 ? ` ${styles.offsetRow}` : ""}`}
+          data-node-id={rowIndex === 0 ? "25:68364" : "25:68385"}
+          key={rowIndex}
+        >
           {row.map((item, itemIndex) => (
             <Image
               src={item.src}
