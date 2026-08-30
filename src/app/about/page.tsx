@@ -5,10 +5,29 @@ import NumberDisc from "@/components/overview/NumberDisc";
 import OverviewSectionHeader from "@/components/overview/OverviewSectionHeader";
 import OverviewSectionNav from "@/components/overview/OverviewSectionNav";
 import OverviewWordBand from "@/components/overview/OverviewWordBand";
+import { siteConfig } from "@/lib/site";
+
+const title = "OVERVIEW";
+const description = "국악 길라잡이 비즈니스 랩의 관점과 과정, 페이스메이커를 소개합니다.";
 
 export const metadata: Metadata = {
-  title: "OVERVIEW",
-  description: "국악 길라잡이 비즈니스 랩의 관점과 과정, 페이스메이커를 소개합니다.",
+  title,
+  description,
+  openGraph: {
+    title: `${title} | ${siteConfig.name}`,
+    description,
+    url: `${siteConfig.url}/about`,
+    siteName: siteConfig.title,
+    images: [siteConfig.ogImage],
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${title} | ${siteConfig.name}`,
+    description,
+    images: [siteConfig.ogImage.url],
+  },
 };
 
 const sectionNav = [

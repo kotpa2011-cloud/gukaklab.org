@@ -4,8 +4,15 @@
  */
 export const siteConfig = {
   name: "국악 길라잡이",
+  title: "국악 길라잡이: 비즈니스 랩",
   description:
     "예술의 바깥에서 새로운 국악의 무대를 만드는 국악 길라잡이 비즈니스 랩입니다.",
+  url: "https://gukaklab.org",
+  ogImage: {
+    url: "/images/og-image.jpg",
+    width: 1230,
+    height: 630,
+  },
 } as const;
 
 /** Header / Footer 공통 메뉴 */

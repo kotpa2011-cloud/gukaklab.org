@@ -1,11 +1,30 @@
 import type { Metadata } from "next";
 
 import { getArchiveItemsGroupedByStage } from "@/lib/archive";
+import { siteConfig } from "@/lib/site";
 import { ARCHIVE_STAGE_LABEL } from "@/types/archive";
 
+const title = "ARCHIVE";
+const description = "MEET UP, BOOTCAMP, SHOW UP으로 이어지는 국악 길라잡이의 기록입니다.";
+
 export const metadata: Metadata = {
-  title: "ARCHIVE",
-  description: "MEET UP, BOOTCAMP, SHOW UP으로 이어지는 국악 길라잡이의 기록입니다.",
+  title,
+  description,
+  openGraph: {
+    title: `${title} | ${siteConfig.name}`,
+    description,
+    url: `${siteConfig.url}/archive`,
+    siteName: siteConfig.title,
+    images: [siteConfig.ogImage],
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${title} | ${siteConfig.name}`,
+    description,
+    images: [siteConfig.ogImage.url],
+  },
 };
 
 const stageDescriptions = {
