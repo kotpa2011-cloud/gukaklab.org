@@ -7,11 +7,7 @@ import { useEffect, useState } from "react";
 
 import { mainNav } from "@/lib/site";
 
-const mobileNav = [
-  ...mainNav,
-  { href: "/archive#meet-up", label: "MEET UP", disabled: true },
-  { href: "/archive#show-up", label: "SHOW UP", disabled: true },
-] as const;
+const mobileNav = [...mainNav] as const;
 
 export default function Header() {
   const pathname = usePathname();
