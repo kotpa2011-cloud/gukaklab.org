@@ -1,24 +1,13 @@
-import Link from "next/link";
+"use client";
 
-import { mainNav, siteConfig } from "@/lib/site";
+import { usePathname } from "next/navigation";
+
+import HomeFooter from "@/components/home/HomeFooter";
 
 export default function Footer() {
-  return (
-    <footer className="site-footer">
-      <p>{siteConfig.name}: 비즈니스 랩</p>
-      <nav aria-label="하단 메뉴">
-        {mainNav.map((item) =>
-          item.disabled ? (
-            <span className="nav-disabled" role="link" aria-disabled="true" key={item.href}>
-              {item.label}
-            </span>
-          ) : (
-            <Link key={item.href} href={item.href}>
-              {item.label}
-            </Link>
-          ),
-        )}
-      </nav>
-    </footer>
-  );
+  const pathname = usePathname();
+
+  if (pathname === "/") return null;
+
+  return <HomeFooter variant="static" />;
 }

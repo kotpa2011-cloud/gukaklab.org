@@ -468,10 +468,6 @@ body:has(.home-poster) #main {
   display: none;
 }
 
-body:has(.home-poster) .site-footer {
-  display: none;
-}
-
 .home-footer {
   position: fixed;
   z-index: 40;
@@ -490,6 +486,15 @@ body:has(.home-poster) .site-footer {
   will-change: transform;
   word-break: break-word;
   --home-footer-edge: clamp(20px, 3.6458vw, 70px);
+}
+
+.home-footer.is-static {
+  position: relative;
+  z-index: auto;
+  inset: auto;
+  width: 100%;
+  transform: none;
+  will-change: auto;
 }
 
 .home-footer-name {
@@ -548,10 +553,6 @@ body:has(.home-poster) .site-footer {
 }
 
 /* OVERVIEW */
-body:has(.overview-layout) .site-footer {
-  display: none;
-}
-
 .overview-layout {
   display: grid;
   min-width: 0;
@@ -1045,26 +1046,6 @@ body:has(.overview-layout) .site-footer {
   font-size: 1.6rem;
 }
 
-/* Footer */
-.site-footer {
-  display: flex;
-  min-height: 78px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 20px var(--page-gutter);
-  border-top: 1px solid #333;
-  color: var(--yellow);
-  background: var(--black);
-  font-size: 0.8rem;
-  font-weight: 800;
-}
-
-.site-footer nav {
-  display: flex;
-  gap: 24px;
-}
-
 @media (max-width: 1500px) and (min-width: 701px) {
   .home-footer-info {
     left: var(--home-footer-edge);
@@ -1339,6 +1320,10 @@ body:has(.overview-layout) .site-footer {
     right: 65px;
     bottom: 28px;
     font-size: 8px;
+  }
+
+  .home-footer.is-static {
+    width: calc(100% + var(--mobile-rail));
   }
 
   .home-poster {
@@ -1648,12 +1633,6 @@ body:has(.overview-layout) .site-footer {
     grid-row: 1 / span 3;
   }
 
-  .site-footer {
-    min-height: 100px;
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 22px 20px;
-  }
 }
 
 @media (max-width: 340px) {

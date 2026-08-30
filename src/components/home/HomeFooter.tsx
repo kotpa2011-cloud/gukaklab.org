@@ -4,10 +4,16 @@ import { useEffect, useRef } from "react";
 
 const FOOTER_HEIGHT = 130;
 
-export default function HomeFooter() {
+type HomeFooterProps = {
+  variant?: "overlay" | "static";
+};
+
+export default function HomeFooter({ variant = "overlay" }: HomeFooterProps) {
   const footerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    if (variant === "static") return;
+
     const footer = footerRef.current;
     if (!footer) return;
 
@@ -42,12 +48,12 @@ export default function HomeFooter() {
       reducedMotion.removeEventListener("change", requestPositionUpdate);
       if (animationFrame) window.cancelAnimationFrame(animationFrame);
     };
-  }, []);
+  }, [variant]);
 
   return (
     <footer
       ref={footerRef}
-      className="home-footer"
+      className={`home-footer${variant === "static" ? " is-static" : ""}`}
       aria-label="전통공연예술진흥재단 정보"
       data-node-id="15:58692"
     >
