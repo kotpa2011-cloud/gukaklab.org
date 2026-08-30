@@ -1,0 +1,23 @@
+:global(.desktop-nav-links) .desktopNavButton {
+  border-bottom: 0 solid transparent;
+  color: var(--white);
+}
+
+:global(.desktop-nav-links) .desktopNavButton::after {
+  content: none !important;
+}
+
+:global(.desktop-nav-links) a.desktopNavButton:hover:not([aria-current="page"]) {
+  border-bottom: 5px solid var(--yellow);
+  color: var(--white);
+}
+
+:global(.desktop-nav-links) a.desktopNavButton:active:not([aria-current="page"]) {
+  border-bottom-color: var(--yellow-ghost);
+  color: #6a6b6c;
+}
+
+:global(.desktop-nav-links) .desktopNavButton[aria-current="page"] {
+  border-bottom-width: 0;
+  color: var(--yellow);
+}

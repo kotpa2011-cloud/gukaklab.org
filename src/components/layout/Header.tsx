@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 
 import { mainNav } from "@/lib/site";
 
+import styles from "./Header.module.css";
+
 const mobileNav = [...mainNav] as const;
 
 export default function Header() {
@@ -39,11 +41,17 @@ export default function Header() {
           <div className="desktop-nav-links">
             {mainNav.map((item) =>
               item.disabled ? (
-                <span className="nav-disabled" role="link" aria-disabled="true" key={item.href}>
+                <span
+                  className={`nav-disabled ${styles.desktopNavButton}`}
+                  role="link"
+                  aria-disabled="true"
+                  key={item.href}
+                >
                   {item.label}
                 </span>
               ) : (
                 <Link
+                  className={styles.desktopNavButton}
                   key={item.href}
                   href={item.href}
                   aria-current={pathname === item.href ? "page" : undefined}
