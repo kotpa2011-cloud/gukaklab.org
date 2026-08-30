@@ -45,14 +45,16 @@ function InteractionGraphic({ graphic, original }: { graphic: GraphicName; origi
       className={`home-graphic home-graphic-${graphic}`}
       data-node-id={original ? asset.nodeId : undefined}
     >
-      <Image
-        src={asset.src}
-        alt=""
-        width={asset.width}
-        height={asset.height}
-        priority
-        sizes="(max-width: 700px) 46vw, 23vw"
-      />
+      <span className="home-graphic-motion">
+        <Image
+          src={asset.src}
+          alt=""
+          width={asset.width}
+          height={asset.height}
+          priority
+          sizes="(max-width: 700px) 46vw, 23vw"
+        />
+      </span>
     </span>
   );
 }

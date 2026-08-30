@@ -7,11 +7,17 @@ export default function Footer() {
     <footer className="site-footer">
       <p>{siteConfig.name}: 비즈니스 랩</p>
       <nav aria-label="하단 메뉴">
-        {mainNav.map((item) => (
-          <Link key={item.href} href={item.href}>
-            {item.label}
-          </Link>
-        ))}
+        {mainNav.map((item) =>
+          item.disabled ? (
+            <span className="nav-disabled" role="link" aria-disabled="true" key={item.href}>
+              {item.label}
+            </span>
+          ) : (
+            <Link key={item.href} href={item.href}>
+              {item.label}
+            </Link>
+          ),
+        )}
       </nav>
     </footer>
   );

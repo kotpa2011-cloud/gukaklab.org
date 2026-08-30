@@ -9,8 +9,8 @@ import { mainNav } from "@/lib/site";
 
 const mobileNav = [
   ...mainNav,
-  { href: "/archive#meet-up", label: "MEET UP" },
-  { href: "/archive#show-up", label: "SHOW UP" },
+  { href: "/archive#meet-up", label: "MEET UP", disabled: true },
+  { href: "/archive#show-up", label: "SHOW UP", disabled: true },
 ] as const;
 
 export default function Header() {
@@ -41,15 +41,21 @@ export default function Header() {
 
         <nav aria-label="주요 메뉴" className="desktop-nav">
           <div className="desktop-nav-links">
-            {mainNav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={pathname === item.href ? "page" : undefined}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {mainNav.map((item) =>
+              item.disabled ? (
+                <span className="nav-disabled" role="link" aria-disabled="true" key={item.href}>
+                  {item.label}
+                </span>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={pathname === item.href ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              ),
+            )}
           </div>
           <Image
             className="desktop-foundation-logo"
@@ -104,16 +110,22 @@ export default function Header() {
         aria-hidden={!isOpen}
       >
         <div className="mobile-menu-links">
-          {mobileNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              tabIndex={isOpen ? 0 : -1}
-              onClick={() => setIsOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {mobileNav.map((item) =>
+            item.disabled ? (
+              <span className="nav-disabled" role="link" aria-disabled="true" key={item.href}>
+                {item.label}
+              </span>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                tabIndex={isOpen ? 0 : -1}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
         </div>
       </nav>
     </header>
