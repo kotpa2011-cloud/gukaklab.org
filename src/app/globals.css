@@ -152,7 +152,7 @@ ul {
   position: relative;
   display: block;
   padding: 20px;
-  font-family: "Neue Haas Grotesk Display Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", sans-serif;
   font-size: 32px;
   font-weight: 500;
   line-height: 1;
@@ -627,7 +627,7 @@ body:has(.overview-layout) #main {
   gap: 20px;
   padding: 20px 60px;
   color: var(--black);
-  font-family: "Neue Haas Grotesk Display Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", sans-serif;
   font-size: 32px;
   font-weight: 600;
   line-height: 1;
@@ -726,7 +726,7 @@ body:has(.overview-layout) #main {
 
 .overview-section-heading h1,
 .overview-section-heading h2 {
-  font-family: "Neue Haas Grotesk Display Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", sans-serif;
   font-size: 42px;
   font-weight: 600;
   line-height: 1;
@@ -1301,7 +1301,7 @@ body:has(.overview-layout) #main {
     padding: 20px 12px;
     border-bottom: 1px solid var(--white);
     color: var(--yellow);
-    font-family: "Neue Haas Grotesk Display Pro", "Helvetica Neue", Arial, sans-serif;
+    font-family: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", sans-serif;
     font-size: 32px;
     font-weight: 600;
     letter-spacing: 0;
