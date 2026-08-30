@@ -408,7 +408,7 @@ body:has(.overview-layout) .site-footer {
 .overview-layout {
   display: grid;
   min-width: 0;
-  grid-template-columns: clamp(320px, 25vw, 480px) minmax(0, 1fr);
+  grid-template-columns: 480px minmax(0, 1fr);
   background: #202020;
 }
 
@@ -421,7 +421,7 @@ body:has(.overview-layout) .site-footer {
 .overview-visual {
   position: sticky;
   top: 0;
-  height: calc(100svh - var(--header-height));
+  height: 100svh;
   min-height: 612px;
   overflow: hidden;
   color: var(--black);
